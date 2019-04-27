@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "homepage";
+}
+
+<h2>homepage</h2>
+
+<div>
+    @using (Html.BeginForm())
+    {
+        @Html.TextBox("name", "", new { placeholder = "your name" })<br />
+        @Html.TextBox("surname", "", new { placeholder = "your surname" })<br />
+        <hr />
+        <button type="submit">Register</button>
+    }
+
+</div>
+<div>
+    <hr />
+</div>
+<div>
+    @if (ViewBag.take_list != null)
+    {
+        <ul>
+            @foreach (var item in (List<string>)ViewBag.take_list) //ViewBag içerisine Controller tarafında List halinde veri aktarıldı ama casting işlemi yapmazsak foreach ile dönemeyiz çünkü ViewBag içerisindeki verinin list oldugunu anlayamaz.
+            {
+                <li>
+                    @item
+                </li>
+            }
+        </ul>
+    }
+</div>
